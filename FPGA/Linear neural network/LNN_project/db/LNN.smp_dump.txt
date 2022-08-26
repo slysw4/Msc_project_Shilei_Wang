@@ -1,0 +1,12 @@
+
+State Machine - |LNN|output_flag
+Name output_flag.1 
+output_flag.0 0 
+output_flag.1 1 
+
+State Machine - |LNN|current_state
+Name current_state.s3 current_state.s2 current_state.s1 current_state.s0 
+current_state.s0 0 0 0 0 
+current_state.s1 0 0 1 1 
+current_state.s2 0 1 0 1 
+current_state.s3 1 0 0 1 

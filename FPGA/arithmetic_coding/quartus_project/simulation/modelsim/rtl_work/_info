@@ -1,0 +1,83 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/simulation/modelsim
+T_opt
+!s110 1657237651
+V^g0[Ed6N^W9F2E:>7;DTR2
+Z1 04 10 4 work tb_encoder fast 0
+=3-38f3abd39bc1-62c77093-1b5-1ae6c
+Z2 o-quiet -auto_acc_if_foreign -work work -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work +acc
+Z3 tCvgOpt 0
+n@_opt
+Z4 OL;O;10.5;63
+R0
+T_opt1
+!s110 1657749447
+V@?2M?PWMd^_]fBE>12HSS2
+R1
+=1-38f3abd39bc1-62cf3fc7-36c-3c74
+R2
+R3
+n@_opt1
+R4
+R0
+T_opt2
+!s110 1658358015
+V@PST=R_3LK=H[1OWF_k:n0
+R1
+=1-38f3abd39bc1-62d888ff-38a-d004
+R2
+R3
+n@_opt2
+R4
+vencoder
+!s110 1658358007
+!i10b 1
+!s100 1l?UAfZC]d]n6[?>4KW]70
+IAZ2UangGa?[mZc^A9GkBL3
+Z5 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1658357877
+8C:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../RTL/encoder.v
+FC:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../RTL/encoder.v
+L0 1
+Z6 OL;L;10.5;63
+r1
+!s85 0
+31
+!s108 1658358007.000000
+!s107 C:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../RTL/encoder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../RTL|C:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../RTL/encoder.v|
+!i113 0
+Z7 o-vlog01compat -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+!s92 -vlog01compat -work work {+incdir+C:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../RTL} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R3
+vtb_encoder
+!s110 1658358006
+!i10b 1
+!s100 JH7f2bc:IBPAcBgA_U:j63
+I2ePBPN]i6OHb?cRJWK8gn1
+R5
+R0
+w1658357998
+8C:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../sim/tb_encoder.v
+FC:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../sim/tb_encoder.v
+L0 3
+R6
+r1
+!s85 0
+31
+!s108 1658358006.000000
+!s107 C:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../sim/tb_encoder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../sim|C:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../sim/tb_encoder.v|
+!i113 0
+R7
+!s92 -vlog01compat -work work {+incdir+C:/Users/SHILEI WANG/Desktop/FYP/FPGA/arithmetic_coding/quartus_project/../sim} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R3

@@ -1,0 +1,45 @@
+`timescale 1ns / 1ns
+
+module tb_encoder();
+
+reg 		   sys_clk;
+reg 		 sys_reset;
+
+reg  [95:0]  symbol_in;
+wire [160:0] output_bit;
+wire [6:0]	code_index;
+
+
+
+
+initial begin
+	// $readmemb("symbols.txt",symbol_in); 
+	symbol_in <= 0;
+	sys_clk   <= 1'b0;
+	sys_reset <= 1'b1;
+end
+
+always #5 sys_clk = ~sys_clk;
+
+initial 
+	begin
+		$timeformat(-9,0,"ns",6);
+		$monitor("@time %t: symbol_in=%b, sys_reset=%b, output_bit=%b",$time,symbol_in,sys_reset,output_bit);
+		
+	end 
+
+
+encoder encoder_instance
+(
+	.symbol_in	(symbol_in)	,  
+	.sys_clk	(sys_clk)	,
+	.sys_reset	(sys_reset)	,
+	
+	.output_bit	(output_bit),
+	.code_index (code_index)
+
+	
+);
+endmodule 
+
+

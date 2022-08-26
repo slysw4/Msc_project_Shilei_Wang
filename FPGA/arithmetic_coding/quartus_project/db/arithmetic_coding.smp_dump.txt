@@ -1,0 +1,21 @@
+
+State Machine - |encoder|E3_flag
+Name E3_flag.1 
+E3_flag.0 0 
+E3_flag.1 1 
+
+State Machine - |encoder|remaining_flag
+Name remaining_flag.1 
+remaining_flag.0 0 
+remaining_flag.1 1 
+
+State Machine - |encoder|start_flag
+Name start_flag.00 start_flag.10 start_flag.01 
+start_flag.00 0 0 0 
+start_flag.01 1 0 1 
+start_flag.10 1 1 0 
+
+State Machine - |encoder|stop_flag
+Name stop_flag.1 
+stop_flag.0 0 
+stop_flag.1 1 

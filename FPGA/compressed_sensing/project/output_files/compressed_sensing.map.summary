@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Mon Aug 22 14:07:37 2022
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
+Revision Name : compressed_sensing
+Top-level Entity Name : compressed_sensing
+Family : Cyclone IV E
+Total logic elements : 370
+    Total combinational functions : 345
+    Dedicated logic registers : 67
+Total registers : 67
+Total pins : 19
+Total virtual pins : 0
+Total memory bits : 384
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

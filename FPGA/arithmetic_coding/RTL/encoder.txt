@@ -1,0 +1,132 @@
+module encoder
+(
+	input 		wire		symbol_in,  
+	input 		wire 		sys_clk,
+	input 		wire 		sys_reset,
+	
+	output  				output_bit
+	
+);
+
+//Compute the Word Length required.
+parameter 		total_count = 7'b1100000;  	//96 channels
+parameter 		N = 4'b1000;              	// N = ceil(log2(total_count)) + 2. TO avoid the index difference: N = 9-1 = 8
+
+// cumulative counts vector for the input symbols
+reg [6:0]   cumulative_counts[0:5]; 		 // six different symbols
+
+
+//Initialize the lower and upper bounds.
+reg [8:0]	dec_low;	
+reg [8:0]	dec_up; 		
+reg [6:0]	E3_count; 	
+reg [8:0]	dec_low_new; 
+
+reg [2:0] 	cumulative_index;
+reg 	 	start_flag;
+
+reg 		code[488:0];
+reg 		code_index;
+reg [8:0]	code_length;
+
+
+always@(posedge sys_clk or negedge sys_reset)
+	begin 
+		if(!sys_reset)
+			begin
+				dec_low 	<= 9'd0;
+				dec_up 		<= 9'd511;		  //2^N - 1
+				E3_count 	<= 7'd0;
+				dec_low_new <= 9'd0;
+				code_index  <= 9'd0;
+			end
+		else
+			begin
+				case (symbol_in)
+					3'b000: cumulative_index = 3'd0;
+					3'b001: cumulative_index = 3'd1;
+					3'b010: cumulative_index = 3'd2;
+					3'b011: cumulative_index = 3'd3;
+					3'b100: cumulative_index = 3'd4;
+					3'b101: cumulative_index = 3'd5;
+					3'b110: cumulative_index = 3'd6;
+				default: cumulative_index = 0;
+				endcase
+				
+				// compute the new lower bound
+				dec_low_new = dec_low + (dec_up - dec_low + 1)*cumulative_counts[cumulative_index]/total_count;
+				
+				// compute the new upper bound
+				dec_up = dec_low + (dec_up - dec_low + 1)*cumulative_counts[cumulative_index]/total_count - 1;
+				
+				dec_low = dec_low_new;
+				
+				start_flag = 1'b1;
+			end
+			
+	
+	end 
+	
+always@(posedge sys_clk or negedge sys_reset)
+	begin 
+		if (start_flag)
+			begin
+				while (( dec_low[N] == dec_up[N]) || ( (dec_low[N-1] == 1) && (dec_up[N-1] == 0) ))
+					begin 
+						if (dec_low[N]==dec_up[N])
+							begin
+								// get the MSB
+								code[code_index] <= dec_low[N];
+								code_index <= code_index + 1;
+								
+								// left shifts
+								dec_low <= dec_low << 1; //dec_low << 1 + 0
+								dec_up 	<= dec_up  << 1 + 1;
+								
+								// check if E3_count is non-zero and transmit appropriate bits
+								while (E3_count > 0)
+									begin 
+										// have to transmit complement of b, E3_count times
+										E3_count <= E3_count - 1;
+										code <= {code, (!dec_low[N])}; 
+										code_index <= code_index + 1;
+										
+									end
+
+							end
+							
+							// Else if it is an E3 condition
+						else if ((dec_low[N-1] == 1) && (dec_up[N-1] == 0))
+							begin
+								// left shifts
+								// dec_low <= dec_low << 1 + 0;
+								// dec_up 	<= dec_up  << 1 + 1;
+								
+								// left shift and complement the new MSB of dec_low and dec_up
+								dec_low <= (dec_low << 1) & 9'b1_0000_0000;
+								dec_up  <= (dec_up  << 1 + 1) & 9'b1_0000_0000;
+								
+								// Increment E3_count to keep track of number of times E3 condition is hit.
+								E3_count <= E3_count + 1;
+							
+							end 
+						
+						
+
+						
+						
+						
+						
+					end
+			
+			
+			end
+	
+	
+	
+	
+	end 
+
+
+
+endmodule 
