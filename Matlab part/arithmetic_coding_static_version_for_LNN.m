@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                             %encoding part%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [transmission_length, decoded_result] = arithmetic_coding_static_version_for_CS(input_data) 
+function [average_length, decoded_result] = arithmetic_coding_static_version_for_LNN(input_data) 
 % choose error or compresssed_data
 % input_data = compressed_data;
 

@@ -9,7 +9,7 @@ choice_transform = 2;
 choice_Phi = 0;         
 
 load error.mat
-load Phi_new.mat
+load Phi_new_17.mat
 
 
 % Sabes dataset
@@ -32,16 +32,15 @@ switch choice_Phi
         Phi = PartHadamardMtx(m,n);      
 
     case 0
-        Phi = zeros(48,96);
-        for j = 1:a*n
-             pos_index = randperm(96,4);
-             neg_index = randperm(96,4);
-
-            for k = 1:length(pos_index)
-                Phi(j,pos_index(k)) = -1;
-                Phi(j,neg_index(k)) = -1;
-            end 
-        end 
+%         Phi = zeros(48,96);
+%         for j = 1:a*n
+%              pos_index = randperm(96,8);
+% 
+%             for k = 1:length(pos_index)
+%                 Phi(j,pos_index(k)) = 1;
+% 
+%             end 
+%         end 
 
 
 end
@@ -50,7 +49,7 @@ for k = 1:4
 
 dynamic_range = 1+k;
 
-for j = 4:-1:1
+for j = 4:-1:2
 
 bin_period = 5+(j-1)*5;
 
@@ -94,9 +93,8 @@ iteration1 = floor(4000/bin_period);
         [average_length(k,j), decoded_result] = arithmetic_coding_static_version_for_CS(compressed_data); 
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% The average length is the length of bits required to transmit MUA data of 96
-% channels at the pre-defined binning period.
-    average_length
+    
+    
 
         %% Reconstruction of signal
      for i = 1:iteration1  
@@ -106,11 +104,11 @@ iteration1 = floor(4000/bin_period);
             reconstructed_signal = round(real(s1));
        
             reconstructed_signal(reconstructed_signal(:)<0)=0;
-   
+        each_ite_error(i) = sum(abs((raw_signal(i,:))'-reconstructed_signal),1);
     
     end 
     
- 
+        averaged_error = sum(each_ite_error)/i
         
 
 end 
